@@ -1,13 +1,37 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{style.css}">
     <title>Portfolio</title>
 </head>
 <body>
 <h1>face4</h1>
+<a href="/solved">show solved</a>
 <ul class="list">
-    <li th:text="'yukicoder : ' + ${solved}"></li>
+    <li th:text="'AtCoder   : ' + ${atcodersolved}"></li>
+    <li th:text="'yukicoder : ' + ${yukisolved}"></li>
+    <li th:text="'Codeforces : ' + ${codeforcessolved}"></li>
+    <li th:text="'AOJ : ' + ${aojsolved}"></li>
 </ul>
+
+<table border="1" border-color="#333333">
+    <tr>
+        <th>AtCoder</th>
+        <th th:text="${atcodersolved}"></th>
+    </tr>
+    <tr>
+        <th>Codeforces</th>
+        <th th:text="${codeforcessolved}"></th>
+    </tr>
+    <tr>
+        <th>yukicoder</th>
+        <th th:text="${yukisolved}"></th>
+    </tr>
+    <tr>
+        <th>AOJ</th>
+        <th th:text="${aojsolved}"></th>
+    </tr>
+</table>
 </body>
 </html>

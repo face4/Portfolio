@@ -1,0 +1,6 @@
+api:
+  url:
+    yukicoder: "https://yukicoder.me/api/v1/user/id/5429"
+    atcoder: "https://kenkoooo.com/atcoder/resources/ac.json"
+    codeforces: "https://codeforces.com/api/user.status?handle=face4"
+    aoj: "https://judgeapi.u-aizu.ac.jp/users/face4"
