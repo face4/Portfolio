@@ -1,21 +1,55 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{style.css}">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
     <title>Portfolio</title>
 </head>
 <body>
-<h1>face4</h1>
-<a href="/solved">show solved</a>
+<header>
+    <h1 class="headline">face4</h1>
+    <ul class="nav-list">
+        <li class="nav-list-item">Home</li>
+        <li class="nav-list-item">About</li>
+        <li class="nav-list-item">Topic</li>
+    </ul>
+</header>
+
+<h2>プロフィール</h2>
+1997年千葉県生まれ。
+
+<h2>スキル</h2>
+<ul>
+    <li>TOEIC 890(Listening 410 + Reading 480) (2019/5/26)</li>
+</ul>
+
+<h2>職歴</h2>
+<ul>
+    <li>インターンシップ@Yahoo株式会社(2020/08 ~ 2020/09)</li>
+    社内で実際にわれているツールの一機能を開発。設計・実装・テストを行い、本番環境へデプロイ
+</ul>
+
+<h2>競技プログラミング</h2>
+2018年3月に競技プログラミングを開始し、国内上位1%の位置にまで到達<br><br>
+各種コンテストサイトにおけるプロフィール
+<ul>
+    <li><a href="https://atcoder.jp/users/face4">AtCoder</a></li>
+    <li><a href="https://yukicoder.me/users/5429">yukicoder</a></li>
+    <li><a href="https://onlinejudge.u-aizu.ac.jp/status/users/face4">AOJ</a></li>
+    <li>Codeforces</li>
+</ul>
+各種コンテストサイトにおけるSolved数
+<!---
 <ul class="list">
     <li th:text="'AtCoder   : ' + ${atcodersolved}"></li>
     <li th:text="'yukicoder : ' + ${yukisolved}"></li>
     <li th:text="'Codeforces : ' + ${codeforcessolved}"></li>
     <li th:text="'AOJ : ' + ${aojsolved}"></li>
 </ul>
+--->
 
-<table border="1" border-color="#333333">
+<table class="table-striped" border="1" border-color="#333333">
     <tr>
         <th>AtCoder</th>
         <th th:text="${atcodersolved}"></th>

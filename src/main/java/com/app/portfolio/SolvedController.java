@@ -32,13 +32,17 @@ public class SolvedController {
     @Value("${api.url.aoj}")
     private String aojUrl;
 
-    @GetMapping("/solved")
+    @GetMapping("/")
     public String solved(Model model){
         Object obj = restTemplate.getForObject(yukiUrl, Object.class);
         LinkedHashMap<Object, Object> lhm = (LinkedHashMap)obj;
         model.addAttribute("yukisolved", lhm.get("Solved"));
-        Codeforces codeforces = restTemplate.getForObject(cfUrl, Codeforces.class);
-        model.addAttribute("codeforcessolved", codeforces.getSolved());
+        try {
+            Codeforces codeforces = restTemplate.getForObject(cfUrl, Codeforces.class);
+            model.addAttribute("codeforcessolved", codeforces.getSolved());
+        }catch(Exception e){
+            model.addAttribute("codeforcessolved", "It seems that Codeforces is temporally unavailable");
+        }
         List<User> atcoder = Arrays.asList(restTemplate.getForObject(acUrl, User[].class));
         atcoder.stream().filter(it->it.getUser_id().equals("face4")).forEach(it->model.addAttribute("atcodersolved", it.getProblem_count()));
         Aoj aoj = restTemplate.getForObject(aojUrl, Aoj.class);
@@ -50,6 +54,7 @@ public class SolvedController {
     public RestTemplate restTemplate(){
         HttpComponentsClientHttpRequestFactory clientHttpRequestFactory =
                 new HttpComponentsClientHttpRequestFactory(HttpClientBuilder.create().build());
+        clientHttpRequestFactory.setConnectTimeout(2000);
         return new RestTemplate(clientHttpRequestFactory);
     }
 }
