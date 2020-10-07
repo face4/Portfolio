@@ -73,33 +73,35 @@
     <ul>
         <li>2018年3月に競技プログラミングを開始し、AtCoderにて国内上位1%の位置にまで到達</li>
         <li>各コンテストサイトでのSolved (APIで最新の値を取得しています)</li>
-        <table class="table table-hober table-bordered">
-            <thead class="thead-dark">
-                <th scope="col"></th>
-                <th scope="col">Solved</th>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">AtCoder</th>
-                <th th:text="${atcodersolved}"></th>
-            </tr>
-            <tr>
-                <th scope="row">Codeforces</th>
-                <th th:text="${codeforcessolved}"></th>
-            </tr>
-            <tr>
-                <th scope="row">yukicoder</th>
-                <th th:text="${yukisolved}"></th>
-            </tr>
-            <tr>
-                <th scope="row">AOJ</th>
-                <th th:text="${aojsolved}"></th>
-            </tr>
-            <tr>
-                <th scope="row">Sum</th>
-                <th th:text="${atcodersolved}+${codeforcessolved}+${yukisolved}+${aojsolved}"></th>
-            </tr>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead align="center" class="thead-dark">
+                    <th scope="col"></th>
+                    <th scope="col">Solved</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">AtCoder</th>
+                    <th th:text="${atcodersolved}"></th>
+                </tr>
+                <tr>
+                    <th scope="row">Codeforces</th>
+                    <th th:text="${codeforcessolved}"></th>
+                </tr>
+                <tr>
+                    <th scope="row">yukicoder</th>
+                    <th th:text="${yukisolved}"></th>
+                </tr>
+                <tr>
+                    <th scope="row">AOJ</th>
+                    <th th:text="${aojsolved}"></th>
+                </tr>
+                <tr>
+                    <th scope="row">Sum</th>
+                    <th th:text="${atcodersolved}+${codeforcessolved}+${yukisolved}+${aojsolved}"></th>
+                </tr>
+            </table>
+        </div>
         <li>第4回 RECRUIT 日本橋ハーフマラソン 本戦 (<a href="https://atcoder.jp/contests/rcl-contest-2020-final">link</a>)</li>
         <li>第一回日本最強プログラマー学生選手権決勝 (<a href="https://atcoder.jp/contests/jsc2019-final">link</a>)</li>
         <li>TCO19 Japan Regional (<a href="https://community.topcoder.com/stat?Contest=%2Fstat%3Fc%3Dround_overview%26er%3D20%26rd%3D17637&rd=17637&c=round_overview&er=68">link</a>)</li>
