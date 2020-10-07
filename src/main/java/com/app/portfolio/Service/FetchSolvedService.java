@@ -1,24 +1,24 @@
-package com.app.portfolio;
+package com.app.portfolio.Service;
 
+import com.app.portfolio.Model.Aoj;
+import com.app.portfolio.Model.Codeforces;
+import com.app.portfolio.Model.User;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-@Controller
-public class SolvedController {
-
+@Component
+public class FetchSolvedService {
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Value("${api.url.yukicoder}")
     private String yukiUrl;
@@ -32,22 +32,34 @@ public class SolvedController {
     @Value("${api.url.aoj}")
     private String aojUrl;
 
-    @GetMapping("/")
-    public String solved(Model model){
+    public int getYukicoderSolved(){
         Object obj = restTemplate.getForObject(yukiUrl, Object.class);
         LinkedHashMap<Object, Object> lhm = (LinkedHashMap)obj;
-        model.addAttribute("yukisolved", lhm.get("Solved"));
+        return (Integer)lhm.get("Solved");
+    }
+
+    public long getCodeforcesSolved(){
         try {
             Codeforces codeforces = restTemplate.getForObject(cfUrl, Codeforces.class);
-            model.addAttribute("codeforcessolved", codeforces.getSolved());
+            return codeforces.getSolved();
         }catch(Exception e){
-            model.addAttribute("codeforcessolved", "It seems that Codeforces is temporally unavailable");
+            return 0;
         }
+    }
+
+    public long getAtCoderSolved(){
         List<User> atcoder = Arrays.asList(restTemplate.getForObject(acUrl, User[].class));
-        atcoder.stream().filter(it->it.getUser_id().equals("face4")).forEach(it->model.addAttribute("atcodersolved", it.getProblem_count()));
+        for(User user : atcoder){
+            if(user.getUser_id().equals("face4")){
+                return user.getProblem_count();
+            }
+        }
+        return 0;
+    }
+
+    public long getAojSolved(){
         Aoj aoj = restTemplate.getForObject(aojUrl, Aoj.class);
-        model.addAttribute("aojsolved", aoj.getStatus().getSolved());
-        return "index";
+        return aoj.getStatus().getSolved();
     }
 
     @Bean

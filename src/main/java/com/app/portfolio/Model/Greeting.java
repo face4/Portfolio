@@ -1,4 +1,4 @@
-package com.app.portfolio;
+package com.app.portfolio.Model;
 
 public class Greeting {
     private final long id;

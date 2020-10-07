@@ -1,4 +1,4 @@
-package com.app.portfolio;
+package com.app.portfolio.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
