@@ -1,3 +1,4 @@
 language: java
 before_install:
   - chmod +x mvnw
+  - mvn -N io.takari:maven:wrapper
