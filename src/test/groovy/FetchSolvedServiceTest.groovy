@@ -15,7 +15,7 @@ class FetchSolvedServiceTest extends Specification{
         service.restTemplate = Mock(RestTemplate)
     }
 
-    def "test #1"(){
+    def "AOJ"(){
         given:
             def AojEntity = new Aoj()
             AojEntity.with {
