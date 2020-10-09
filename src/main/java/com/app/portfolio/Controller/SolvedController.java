@@ -12,7 +12,7 @@ public class SolvedController {
     @Autowired
     private FetchSolvedService fetchSolvedService;
 
-    @GetMapping("/")
+    @GetMapping("/solved")
     public String solved(Model model){
         model.addAttribute("yukisolved", fetchSolvedService.getYukicoderSolved());
         model.addAttribute("codeforcessolved", fetchSolvedService.getCodeforcesSolved());

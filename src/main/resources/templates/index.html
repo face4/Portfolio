@@ -82,23 +82,23 @@
                 <tbody>
                 <tr>
                     <th scope="row">AtCoder</th>
-                    <th th:text="${atcodersolved}"></th>
+                    <th id="AtCoder"><div class="spinner-border"></div></th>
                 </tr>
                 <tr>
                     <th scope="row">Codeforces</th>
-                    <th th:text="${codeforcessolved}"></th>
+                    <th id="Codeforces"><div class="spinner-border"></div></th>
                 </tr>
                 <tr>
                     <th scope="row">yukicoder</th>
-                    <th th:text="${yukisolved}"></th>
+                    <th id="Yukicoder"><div class="spinner-border"></div></th>
                 </tr>
                 <tr>
                     <th scope="row">AOJ</th>
-                    <th th:text="${aojsolved}"></th>
+                    <th id="Aoj"><div class="spinner-border"></div></th>
                 </tr>
                 <tr>
                     <th scope="row">Sum</th>
-                    <th th:text="${atcodersolved}+${codeforcessolved}+${yukisolved}+${aojsolved}"></th>
+                    <th id="sum">0</th>
                 </tr>
             </table>
         </div>
@@ -134,5 +134,8 @@
 <footer>
     このページのレポジトリ：<a href="https://github.com/face4/Portfolio">face4/Portfolio</a>
 </footer>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" th:src="@{/js/fetchSolved.js}"></script>
 </body>
 </html>
